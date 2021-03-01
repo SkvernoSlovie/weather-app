@@ -1,10 +1,10 @@
 export interface UserLocationState {
-  geolocation: object;
+  userGeo: any[];
   error: null | string;
 }
 export interface UserSetLocation {
   type: UserLocationActionTypes.SET_GEOLOCATION;
-  payload: object;
+  payload: any[];
 }
 export interface UserSetLocationError {
   type: UserLocationActionTypes.SET_GEOLOCATION_ERROR;

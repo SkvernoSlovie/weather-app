@@ -3,6 +3,8 @@ import { locationReducer } from './locationReducer';
 import { weatherReducer } from './weatherReducer';
 
 export const rootReducer = combineReducers({
-  locationReducer,
-  weatherReducer,
+  geolocation: locationReducer,
+  weather: weatherReducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>;

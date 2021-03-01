@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { WeatherAction, WeatherActionsTypes } from '../types/weather';
+import { WeatherAction, WeatherActionsTypes } from '../../types/weather';
 
 export const fetchWeather = () => {
   return async (dispatch: Dispatch<WeatherAction>) => {

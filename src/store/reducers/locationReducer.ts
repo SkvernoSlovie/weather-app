@@ -2,10 +2,10 @@ import {
   UserLocationAction,
   UserLocationState,
   UserLocationActionTypes,
-} from '../types/geolocation';
+} from '../../types/geolocation';
 
 const initialState: UserLocationState = {
-  geolocation: {},
+  userGeo: [51.505, -0.09],
   error: null,
 };
 
@@ -15,7 +15,7 @@ export const locationReducer = (
 ): UserLocationState => {
   switch (action.type) {
     case UserLocationActionTypes.SET_GEOLOCATION:
-      return { ...state, geolocation: action.payload };
+      return { ...state, userGeo: action.payload };
     case UserLocationActionTypes.SET_GEOLOCATION_ERROR:
       return { ...state, error: action.payload };
     default:

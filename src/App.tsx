@@ -1,9 +1,12 @@
 import React from 'react';
+import LeftSideBar from './components/LeftSideBar/LeftSideBar';
+import Map from './components/Map/Map';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
+    <div>
+      <LeftSideBar />
+      <Map />
     </div>
   );
 }
