@@ -1,4 +1,3 @@
-import Map from '../Map/Map';
 import styled from 'styled-components';
 import WeekWeather from '../WeekWeather/WeekWeather';
 import WeatherHighlights from '../WeatherHighlights/WeatherHighlights';
@@ -63,8 +62,8 @@ const TempButtonContainer = styled.div`
 
 const WeatherSecondary = styled.div`
   display: flex;
-  justify-content: space-around;
-  margin-top: 250px;
+
+  margin-top: 200px;
 `;
 
 const MainContent: React.FC = () => {
@@ -83,7 +82,6 @@ const MainContent: React.FC = () => {
       <WeekWeather />
       <WeatherSecondary>
         <WeatherHighlights />
-        <Map />
       </WeatherSecondary>
     </MainContentWrapper>
   );

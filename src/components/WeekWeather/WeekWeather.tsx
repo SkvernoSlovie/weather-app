@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 const WeekWeatherContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 30px 0 90px;
 `;
 
 const WeekWeatherCard = styled.div`
