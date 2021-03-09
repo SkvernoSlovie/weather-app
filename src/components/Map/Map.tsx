@@ -1,6 +1,7 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './index.scss';
+
 import { useActions } from '../../hooks/useAction';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 
