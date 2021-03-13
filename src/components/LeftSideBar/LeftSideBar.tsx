@@ -33,9 +33,9 @@ const Button = styled.button`
   border: none;
   background: #f1f1f1;
   border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 40px;
+  height: 40px;
+  
 
   &:focus {
     outline: none;
@@ -53,7 +53,7 @@ const Input = styled.input.attrs((props) => ({
   size: props.size,
 }))`
   background: #f1f1f1;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   font-size: 24px;
   border: none;
@@ -88,6 +88,9 @@ const WeatherMainContent = styled.div`
       font-weight: 300;
       line-height: 28px;
     }
+  }
+  span {
+    color: #c4c4c4;
   }
 `;
 
@@ -126,7 +129,9 @@ const LeftSideBar: React.FC = () => {
         <WeatherMainContent>
           <h1>-10°</h1>
           <p>Moscow, RU</p>
-          <p>Thusday 14:53</p>
+          <p>
+            Thusday, <span>14:53</span>
+          </p>
         </WeatherMainContent>
         <WeatherSecondaryContent>
           <SecondaryContentFlex>

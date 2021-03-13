@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import cloudy from '../../assets/cloudy.png';
 
 const WeekWeatherContainer = styled.div`
   display: flex;
@@ -18,7 +19,10 @@ const WeekWeatherCard = styled.div`
 const WeekWeather: React.FC = () => {
   return (
     <WeekWeatherContainer>
-      <WeekWeatherCard />
+      <WeekWeatherCard>
+        
+        <img src={cloudy} alt="" />
+      </WeekWeatherCard>
       <WeekWeatherCard />
       <WeekWeatherCard />
       <WeekWeatherCard />

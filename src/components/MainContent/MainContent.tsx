@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 import WeekWeather from '../WeekWeather/WeekWeather';
 import WeatherHighlights from '../WeatherHighlights/WeatherHighlights';
+import DayTimeWeather from '../DayTimeWeather/DayTimeWeather';
 
 const MainContentWrapper = styled.div`
   display: flex;
@@ -13,12 +15,12 @@ const TempButton = styled.button`
   border: none;
   background: #ffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50px;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 28px;
   color: #202020;
   &:focus {
@@ -36,8 +38,12 @@ const TimeButton = styled.button`
   font-weight: 500;
   font-size: 36px;
   line-height: 42px;
+  color: #c4c4c4;
   &:focus {
     outline: none;
+    color: #202020;
+  }
+  &:hover {
     color: #717171;
   }
 `;
@@ -67,6 +73,7 @@ const WeatherSecondary = styled.div`
 `;
 
 const MainContent: React.FC = () => {
+  const [toggleTime, setToggleTime] = React.useState(true);
   return (
     <MainContentWrapper>
       <MainHeader>
@@ -79,7 +86,7 @@ const MainContent: React.FC = () => {
           <TempButton>°F</TempButton>
         </TempButtonContainer>
       </MainHeader>
-      <WeekWeather />
+      {toggleTime ? <DayTimeWeather /> : <WeekWeather />}
       <WeatherSecondary>
         <WeatherHighlights />
       </WeatherSecondary>
