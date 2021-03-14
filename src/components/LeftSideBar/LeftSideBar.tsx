@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 import searcIcon from '../../assets/SearchIcon.svg';
 import homeIcon from '../../assets/HomeIcon.svg';
@@ -35,7 +36,6 @@ const Button = styled.button`
   border-radius: 50px;
   width: 40px;
   height: 40px;
-  
 
   &:focus {
     outline: none;
@@ -110,11 +110,13 @@ const SecondaryContentFlex = styled.div`
 `;
 
 const LeftSideBar: React.FC = () => {
+  const weather = useTypeSelector((state) => state.weather.data);
+  console.log(weather);
+
   return (
     <LeftBarContainer>
       <LeftBarHeader>
         <Input />
-
         <ButtonContainer>
           <Button>
             <img src={searcIcon} />
@@ -127,8 +129,8 @@ const LeftSideBar: React.FC = () => {
       <WeatherContent>
         <img src={weatherIcon} />
         <WeatherMainContent>
-          <h1>-10°</h1>
-          <p>Moscow, RU</p>
+          <h1>{`${weather.current?.temp}°`}</h1>
+          <p>{weather.timezone?.split('/').reverse().join(', ')}</p>
           <p>
             Thusday, <span>14:53</span>
           </p>

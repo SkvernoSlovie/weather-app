@@ -38,7 +38,7 @@ const TimeButton = styled.button`
   font-weight: 500;
   font-size: 36px;
   line-height: 42px;
-  color: #c4c4c4;
+  color: ${(props) => props.color};
   &:focus {
     outline: none;
     color: #202020;
@@ -68,18 +68,25 @@ const TempButtonContainer = styled.div`
 
 const WeatherSecondary = styled.div`
   display: flex;
-
   margin-top: 200px;
 `;
 
 const MainContent: React.FC = () => {
-  const [toggleTime, setToggleTime] = React.useState(true);
+  const [toggleTime, setToggleTime] = React.useState(false);
   return (
     <MainContentWrapper>
       <MainHeader>
         <TimeButtonContainer>
-          <TimeButton>Today</TimeButton>
-          <TimeButton>Week</TimeButton>
+          <TimeButton
+            onClick={() => setToggleTime(true)}
+            color={toggleTime ? '#202020' : '#c4c4c4'}>
+            Today
+          </TimeButton>
+          <TimeButton
+            onClick={() => setToggleTime(false)}
+            color={toggleTime ? '#c4c4c4' : '#202020'}>
+            Week
+          </TimeButton>
         </TimeButtonContainer>
         <TempButtonContainer>
           <TempButton>°C</TempButton>

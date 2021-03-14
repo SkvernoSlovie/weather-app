@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import cloudy from '../../assets/cloudy.png';
 
+import cloudy from '../../assets/cloudy.png';
 
 const WeatherCartContainer = styled.div`
   display: flex;

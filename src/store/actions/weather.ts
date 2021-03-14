@@ -8,7 +8,9 @@ export const fetchWeather = () => {
       dispatch({
         type: WeatherActionsTypes.FETCH_WEATHER,
       });
-      const response = await axios.get('url');
+      const response = await axios.get(
+        'https://api.openweathermap.org/data/2.5/onecall?lat=51.505&lon=-0.09&exclude={part}&appid=ea004e1764c5e81fcbda9290be083cb6',
+      );
       dispatch({ type: WeatherActionsTypes.FETCH_WEATHER_SUCCESS, payload: response.data });
     } catch (e) {
       dispatch({
