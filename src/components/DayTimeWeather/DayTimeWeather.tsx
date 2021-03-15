@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import cloudy from '../../assets/cloudy.png';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 const WeatherCartContainer = styled.div`
   display: flex;
@@ -13,10 +14,10 @@ const TimeWeatherCart = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 100px;
+  width: 110px;
   height: 150px;
   background: #fffdfd;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   span {
     margin-bottom: 15px;
@@ -31,48 +32,21 @@ const TimeWeatherCart = styled.div`
 `;
 
 const DayTimeWeather = () => {
+  const timeWeather = useTypeSelector((state) => state.weather.data.hourly);
+  const curTimeWeather = timeWeather
+    ?.slice(0, 24)
+    .filter((obj, index) => !(index % 3) && (obj.time = new Date().getHours() + index));
+  console.log(curTimeWeather);
   return (
     <WeatherCartContainer>
-      <TimeWeatherCart>
-        <p>14:00</p>
-        <img src={cloudy} alt="" />
-        <span>10°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>17:00</p>
-        <img src={cloudy} alt="" />
-        <span>6°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>20:00</p>
-        <img src={cloudy} alt="" />
-        <span>12°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>23:00</p>
-        <img src={cloudy} alt="" />
-        <span>14°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>02:00</p>
-        <img src={cloudy} alt="" />
-        <span>15°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>05:00</p>
-        <img src={cloudy} alt="" />
-        <span>10°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>08:00</p>
-        <img src={cloudy} alt="" />
-        <span>10°</span>
-      </TimeWeatherCart>
-      <TimeWeatherCart>
-        <p>11:00</p>
-        <img src={cloudy} alt="" />
-        <span>10°</span>
-      </TimeWeatherCart>
+      {curTimeWeather &&
+        curTimeWeather.map((hour, index) => (
+          <TimeWeatherCart key={hour.dt + index}>
+            <p>{`${hour.time}:00`}</p>
+            <img src={cloudy} alt="" />
+            <span>{`${hour.temp}°`}</span>
+          </TimeWeatherCart>
+        ))}
     </WeatherCartContainer>
   );
 };

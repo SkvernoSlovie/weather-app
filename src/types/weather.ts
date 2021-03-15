@@ -4,6 +4,8 @@ export interface WeatherState {
       temp?: number;
     };
     timezone?: string;
+    daily?: any[];
+    hourly?: any[];
   };
   loading: boolean;
   error: null | string;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
 import cloudy from '../../assets/cloudy.png';
 
 const WeekWeatherContainer = styled.div`
@@ -12,10 +13,10 @@ const WeekWeatherCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 100px;
+  width: 110px;
   height: 150px;
   background: #fffdfd;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   span {
     color: #c4c4c4;
@@ -35,57 +36,19 @@ const WeekWeatherCard = styled.div`
 `;
 
 const WeekWeather: React.FC = () => {
+  const dayWeather = useTypeSelector((state) => state.weather.data.daily);
   return (
     <WeekWeatherContainer>
-      <WeekWeatherCard>
-        <h3>Sunday</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
-      <WeekWeatherCard>
-        <h3>Monday</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
-      <WeekWeatherCard>
-        <h3>Tue</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
-      <WeekWeatherCard>
-        <h3>Wed</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
-      <WeekWeatherCard>
-        <h3>Thu</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
-      <WeekWeatherCard>
-        <h3>Sat</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
-      <WeekWeatherCard>
-        <h3>Sun</h3>
-        <img src={cloudy} alt="" />
-        <p>
-          12° <span>10°</span>
-        </p>
-      </WeekWeatherCard>
+      {dayWeather &&
+        dayWeather.map((day, index) => (
+          <WeekWeatherCard key={day.dt + index}>
+            <h3>Sun</h3>
+            <img src={cloudy} alt="" />
+            <p>
+              {`${day.temp.day}°`} <span>{`${day.temp.night}°`}</span>
+            </p>
+          </WeekWeatherCard>
+        ))}
     </WeekWeatherContainer>
   );
 };

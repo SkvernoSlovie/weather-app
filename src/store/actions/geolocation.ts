@@ -5,7 +5,6 @@ export const setGeolocation = () => {
   return (dispatch: Dispatch<UserLocationAction>) => {
     if (localStorage.getItem('geolocation')) {
       const geolocation = localStorage.getItem('geolocation');
-      console.log(geolocation?.split(',').map((el) => Number(el)));
       const coord = geolocation?.split(',').map((el) => Number(el));
       dispatch({
         type: UserLocationActionTypes.SET_GEOLOCATION,

@@ -111,7 +111,6 @@ const SecondaryContentFlex = styled.div`
 
 const LeftSideBar: React.FC = () => {
   const weather = useTypeSelector((state) => state.weather.data);
-  console.log(weather);
 
   return (
     <LeftBarContainer>

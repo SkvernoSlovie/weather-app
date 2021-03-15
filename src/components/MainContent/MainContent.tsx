@@ -51,7 +51,7 @@ const TimeButton = styled.button`
 const MainHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 25px 0;
+  margin: 25px 0 100px 0;
 `;
 
 const TimeButtonContainer = styled.div`
@@ -68,7 +68,7 @@ const TempButtonContainer = styled.div`
 
 const WeatherSecondary = styled.div`
   display: flex;
-  margin-top: 200px;
+  margin-top: 160px;
 `;
 
 const MainContent: React.FC = () => {
