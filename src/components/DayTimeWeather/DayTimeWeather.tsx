@@ -44,7 +44,7 @@ const DayTimeWeather = () => {
           <TimeWeatherCart key={hour.dt + index}>
             <p>{`${hour.time}:00`}</p>
             <img src={cloudy} alt="" />
-            <span>{`${hour.temp}°`}</span>
+            <span>{`${Math.floor(hour.temp - 273.15)}°`}</span>
           </TimeWeatherCart>
         ))}
     </WeatherCartContainer>

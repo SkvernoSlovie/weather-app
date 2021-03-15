@@ -1,7 +1,7 @@
 export interface WeatherState {
   data: {
-    current?: {
-      temp?: number;
+    current: {
+      temp: number;
     };
     timezone?: string;
     daily?: any[];
@@ -23,7 +23,11 @@ export interface FetchWeatherAction {
 
 export interface FetchWeatherSuccessAction {
   type: WeatherActionsTypes.FETCH_WEATHER_SUCCESS;
-  payload: object;
+  payload: {
+    current?: {
+      temp?: number;
+    };
+  };
 }
 
 export interface FetchWeatherErrorAction {

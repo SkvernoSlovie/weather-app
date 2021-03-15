@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
+import LeftSideLoader from './LeftSideLoader';
 
 import searcIcon from '../../assets/SearchIcon.svg';
 import homeIcon from '../../assets/HomeIcon.svg';
@@ -111,6 +112,7 @@ const SecondaryContentFlex = styled.div`
 
 const LeftSideBar: React.FC = () => {
   const weather = useTypeSelector((state) => state.weather.data);
+  const isLoad = useTypeSelector((state) => state.weather.loading);
 
   return (
     <LeftBarContainer>
