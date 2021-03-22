@@ -112,8 +112,8 @@ const SecondaryContentFlex = styled.div`
 
 const LeftSideBar: React.FC = () => {
   const weather = useTypeSelector((state) => state.weather.data);
-  const isLoad = useTypeSelector((state) => state.weather.loading);
-
+  const date = useTypeSelector((state) => state.date.date);
+  console.log(weather);
   return (
     <LeftBarContainer>
       <LeftBarHeader>
@@ -130,20 +130,20 @@ const LeftSideBar: React.FC = () => {
       <WeatherContent>
         <img src={weatherIcon} />
         <WeatherMainContent>
-          <h1>{`${weather.current?.temp}°`}</h1>
+          <h1>{`${weather.current.temp}°`}</h1>
           <p>{weather.timezone?.split('/').reverse().join(', ')}</p>
           <p>
-            Thusday, <span>14:53</span>
+            {`${date?.getDay()}, `} <span>{`${date?.getHours()}:${date?.getMinutes()}`}</span>
           </p>
         </WeatherMainContent>
         <WeatherSecondaryContent>
           <SecondaryContentFlex>
             <img src={weatherCloud} />
-            <p>Clouds - 90%</p>
+            <p>{`Clouds - ${weather.current.clouds}%`}</p>
           </SecondaryContentFlex>
           <SecondaryContentFlex>
             <img src={weatherRain} />
-            <p>Ligth rain</p>
+            <p>{weather.current.weather && weather.current.weather[0].description}</p>
           </SecondaryContentFlex>
         </WeatherSecondaryContent>
       </WeatherContent>

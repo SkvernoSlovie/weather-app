@@ -12,6 +12,7 @@ const initialState: WeatherState = {
 
 const getCelciusFromKelvine = (obj: any) => {
   obj.current.temp = Math.round(obj.current.temp - 273.15);
+
   return obj;
 };
 

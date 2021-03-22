@@ -45,7 +45,8 @@ const WeekWeather: React.FC = () => {
             <h3>Sun</h3>
             <img src={cloudy} alt="" />
             <p>
-              {`${day.temp.day}°`} <span>{`${day.temp.night}°`}</span>
+              {`${Math.floor(day.temp.day - 273.15)}°`}{' '}
+              <span>{`${Math.floor(day.temp.night - 273.15)}°`}</span>
             </p>
           </WeekWeatherCard>
         ))}

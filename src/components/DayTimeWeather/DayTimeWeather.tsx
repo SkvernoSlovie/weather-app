@@ -36,7 +36,7 @@ const DayTimeWeather = () => {
   const curTimeWeather = timeWeather
     ?.slice(0, 24)
     .filter((obj, index) => !(index % 3) && (obj.time = new Date().getHours() + index));
-  console.log(curTimeWeather);
+
   return (
     <WeatherCartContainer>
       {curTimeWeather &&

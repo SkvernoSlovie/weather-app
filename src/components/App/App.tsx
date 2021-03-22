@@ -11,11 +11,12 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-  const { setGeolocation, fetchWeather } = useActions();
+  const { setGeolocation, fetchWeather, setCurrentData } = useActions();
   const [l, g] = useTypeSelector((state) => state.geolocation.userGeo);
   const isLoad = useTypeSelector((state) => state.weather.loading);
   React.useEffect(() => {
     setGeolocation();
+    setCurrentData();
   }, []);
   React.useEffect(() => {
     fetchWeather([l, g]);

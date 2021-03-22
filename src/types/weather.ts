@@ -2,6 +2,8 @@ export interface WeatherState {
   data: {
     current: {
       temp: number;
+      weather?: any[];
+      clouds?: number;
     };
     timezone?: string;
     daily?: any[];
