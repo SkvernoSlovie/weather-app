@@ -37,13 +37,19 @@ const WeekWeatherCard = styled.div`
 
 const WeekWeather: React.FC = () => {
   const dayWeather = useTypeSelector((state) => state.weather.data.daily);
-  console.log(dayWeather);
+  const { ...currentDay } = useTypeSelector((state) => state.date);
+  
+  const newArr = currentDay.date
+    .slice(currentDay.dayIndex + 1)
+    .concat(currentDay.date.slice(0, currentDay.dayIndex))
+    .concat(currentDay.date[currentDay.dayIndex]);
+
   return (
     <WeekWeatherContainer>
       {dayWeather &&
-        dayWeather.map((day, index) => (
+        dayWeather.slice(0, dayWeather.length - 1).map((day, index) => (
           <WeekWeatherCard key={day.dt + index}>
-            <h3>Sun</h3>
+            <h3>{newArr[index]}</h3>
             <img src={cloudy} alt="" />
             <p>
               {`${Math.floor(day.temp.day - 273.15)}°`}{' '}

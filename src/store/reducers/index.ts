@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { locationReducer } from './locationReducer';
 import { weatherReducer } from './weatherReducer';
-import { dataReducer } from './dataReducer';
+import { dataReducer } from './dateReducer';
 
 export const rootReducer = combineReducers({
   geolocation: locationReducer,

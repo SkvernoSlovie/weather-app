@@ -113,13 +113,17 @@ const SecondaryContentFlex = styled.div`
 const LeftSideBar: React.FC = () => {
   const weather = useTypeSelector((state) => state.weather.data);
   const date = useTypeSelector((state) => state.date);
-  const [currentTime, setCurrentTime] = React.useState(new Date().toLocaleTimeString().slice(0, 5));
+  const [currentTime, setCurrentTime] = React.useState(date.time);
 
-  setInterval(() => {
-    setCurrentTime(new Date().toLocaleTimeString().slice(0, 5));
-  }, 60000);
+  React.useEffect(() => {
+    const clock = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString().slice(0, 5));
+    }, 60000);
+    return () => {
+      clearInterval(clock);
+    };
+  }, []);
 
-  console.log(date);
   return (
     <LeftBarContainer>
       <LeftBarHeader>
