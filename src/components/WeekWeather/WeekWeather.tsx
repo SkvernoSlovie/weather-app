@@ -37,6 +37,7 @@ const WeekWeatherCard = styled.div`
 
 const WeekWeather: React.FC = () => {
   const dayWeather = useTypeSelector((state) => state.weather.data.daily);
+  console.log(dayWeather);
   return (
     <WeekWeatherContainer>
       {dayWeather &&

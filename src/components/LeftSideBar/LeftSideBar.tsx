@@ -1,6 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
-import LeftSideLoader from './LeftSideLoader';
 
 import searcIcon from '../../assets/SearchIcon.svg';
 import homeIcon from '../../assets/HomeIcon.svg';
@@ -112,8 +112,14 @@ const SecondaryContentFlex = styled.div`
 
 const LeftSideBar: React.FC = () => {
   const weather = useTypeSelector((state) => state.weather.data);
-  const date = useTypeSelector((state) => state.date.date);
-  console.log(weather);
+  const date = useTypeSelector((state) => state.date);
+  const [currentTime, setCurrentTime] = React.useState(new Date().toLocaleTimeString().slice(0, 5));
+
+  setInterval(() => {
+    setCurrentTime(new Date().toLocaleTimeString().slice(0, 5));
+  }, 60000);
+
+  console.log(date);
   return (
     <LeftBarContainer>
       <LeftBarHeader>
@@ -133,7 +139,7 @@ const LeftSideBar: React.FC = () => {
           <h1>{`${weather.current.temp}°`}</h1>
           <p>{weather.timezone?.split('/').reverse().join(', ')}</p>
           <p>
-            {`${date?.getDay()}, `} <span>{`${date?.getHours()}:${date?.getMinutes()}`}</span>
+            {`${date.day}, `} <span>{currentTime}</span>
           </p>
         </WeatherMainContent>
         <WeatherSecondaryContent>

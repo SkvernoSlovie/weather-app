@@ -1,6 +1,6 @@
 export interface DataActions {
   type: DataActionTypes.SET_CURRENT_DATA;
-  payload: Date;
+  payload: number;
 }
 
 export enum DataActionTypes {
@@ -8,5 +8,7 @@ export enum DataActionTypes {
 }
 
 export interface DataState {
-  date: Date | null;
+  date: string[] | string;
+  time: string;
+  day: string;
 }

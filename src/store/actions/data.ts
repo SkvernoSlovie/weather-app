@@ -3,7 +3,7 @@ import { DataActions, DataActionTypes } from '../../types/data';
 
 export const setCurrentData = () => {
   return (dispatch: Dispatch<DataActions>) => {
-    const currentDate = new Date();
+    const currentDate = new Date().getDay();
     dispatch({
       type: DataActionTypes.SET_CURRENT_DATA,
       payload: currentDate,

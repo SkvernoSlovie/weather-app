@@ -35,7 +35,38 @@ const DayTimeWeather = () => {
   const timeWeather = useTypeSelector((state) => state.weather.data.hourly);
   const curTimeWeather = timeWeather
     ?.slice(0, 24)
-    .filter((obj, index) => !(index % 3) && (obj.time = new Date().getHours() + index));
+    .filter((obj, index) => !(index % 3))
+    .map((obj, index) => {
+      let counter = new Date().getHours();
+      if (index === 0) {
+        obj.time = new Date().getHours();
+      } else {
+        obj.time = counter + 3;
+      }
+
+      return obj;
+    });
+
+  const truTime = (arr: any) => {
+    let counter = new Date().getHours();
+    const newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (i === 0) {
+        arr[i].time = new Date().getHours();
+        newArr.push(arr[i]);
+      } else if (counter > 24) {
+        counter -= 24;
+        arr[i].time = counter;
+      } else {
+        counter += 3;
+        arr[i].time = counter;
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  };
+  console.log(truTime(curTimeWeather).length);
+  // .filter((obj, index) => !(index % 3) && (obj.time = new Date().getHours() + index));
 
   return (
     <WeatherCartContainer>
