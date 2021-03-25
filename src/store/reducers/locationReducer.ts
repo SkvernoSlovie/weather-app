@@ -5,7 +5,7 @@ import {
 } from '../../types/geolocation';
 
 const initialState: UserLocationState = {
-  userGeo: [51.505, -0.09],
+  userGeo: null,
   error: null,
 };
 

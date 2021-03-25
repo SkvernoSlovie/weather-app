@@ -6,9 +6,10 @@ import './index.scss';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 const Map: React.FC = () => {
-  const [l, g] = useTypeSelector((state) => state.geolocation.userGeo);
+  const coord = useTypeSelector((state) => state.geolocation.userGeo);
+  const [l, g] = coord ? coord : [0, 0];
   const [location, setLocation] = React.useState<LatLngExpression>([l, g]);
-  
+
   React.useEffect(() => {
     setLocation([l, g]);
   }, [l, g]);

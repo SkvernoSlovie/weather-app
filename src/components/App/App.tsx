@@ -12,15 +12,19 @@ const AppWrapper = styled.div`
 
 function App() {
   const { setGeolocation, fetchWeather, setCurrentData } = useActions();
-  const [l, g] = useTypeSelector((state) => state.geolocation.userGeo);
+  const coords = useTypeSelector((state) => state.geolocation.userGeo);
   const isLoad = useTypeSelector((state) => state.weather.loading);
   React.useEffect(() => {
     setGeolocation();
     setCurrentData();
   }, []);
+  console.log(coords);
   React.useEffect(() => {
-    fetchWeather([l, g]);
-  }, [l, g]);
+    if (coords) {
+      fetchWeather(coords);
+    }
+  }, [coords]);
+
   return (
     <AppWrapper>
       {isLoad ? <LeftSideLoader /> : <LeftSideBar />}

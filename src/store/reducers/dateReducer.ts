@@ -7,7 +7,6 @@ const initialState: DateState = {
   dayIndex: 0,
 };
 
-console.log(initialState.date[2]);
 export const dataReducer = (state = initialState, action: DateActions): DateState => {
   switch (action.type) {
     case DateActionTypes.SET_CURRENT_DATA:

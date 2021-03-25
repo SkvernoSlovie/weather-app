@@ -1,20 +1,23 @@
 import { Dispatch } from 'redux';
 import { UserLocationAction, UserLocationActionTypes } from '../../types/geolocation';
 
+
 export const setGeolocation = () => {
-  return (dispatch: Dispatch<UserLocationAction>) => {
+  return async (dispatch: Dispatch<UserLocationAction>) => {
     if (localStorage.getItem('geolocation')) {
       const geolocation = localStorage.getItem('geolocation');
       const coord = geolocation?.split(',').map((el) => Number(el));
-      dispatch({
-        type: UserLocationActionTypes.SET_GEOLOCATION,
-        payload: coord ? coord : [51.505, -0.09],
-      });
+      coord &&
+        dispatch({
+          type: UserLocationActionTypes.SET_GEOLOCATION,
+          payload: coord,
+        });
     } else {
       navigator.geolocation.getCurrentPosition(
         ({ coords }) => {
           const { latitude, longitude } = coords;
           localStorage.setItem('geolocation', `${[latitude, longitude]}`);
+
           dispatch({
             type: UserLocationActionTypes.SET_GEOLOCATION,
             payload: [latitude, longitude],

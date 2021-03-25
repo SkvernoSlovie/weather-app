@@ -1,5 +1,5 @@
 export interface UserLocationState {
-  userGeo: any[];
+  userGeo: any[] | null;
   error: null | string;
 }
 export interface UserSetLocation {
