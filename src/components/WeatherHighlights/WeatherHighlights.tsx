@@ -46,7 +46,7 @@ const WeatherHighlights = () => {
       <WeatherHighlightsContainer>
         <HighlightsFlex>
           <HighlightsCart>
-            
+            <h3>Hello</h3>
           </HighlightsCart>
           <HighlightsCart />
           <HighlightsCart />
