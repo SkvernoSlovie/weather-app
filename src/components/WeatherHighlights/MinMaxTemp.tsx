@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const WindSpeedCard = styled.div`
+const MinMaxTempCard = styled.div`
   width: 250px;
   height: 200px;
   background: #ffff;
@@ -25,12 +24,12 @@ const Title = styled.div`
   color: #c5c5c5;
 `;
 
-const WindSpeed: React.FC = () => {
+const MinMaxTemp = () => {
   return (
-    <WindSpeedCard>
-      <Title>Wind Speed</Title>
-    </WindSpeedCard>
+    <MinMaxTempCard>
+      <Title>Min & Max Temperature</Title>
+    </MinMaxTempCard>
   );
 };
 
-export default WindSpeed;
+export default MinMaxTemp;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const WindSpeedCard = styled.div`
+const UVCard = styled.div`
   width: 250px;
   height: 200px;
   background: #ffff;
@@ -24,13 +24,12 @@ const Title = styled.div`
   margin: 20px;
   color: #c5c5c5;
 `;
-
-const WindSpeed: React.FC = () => {
+const UVIndex = () => {
   return (
-    <WindSpeedCard>
-      <Title>Wind Speed</Title>
-    </WindSpeedCard>
+    <UVCard>
+      <Title>UV Index</Title>
+    </UVCard>
   );
 };
 
-export default WindSpeed;
+export default UVIndex;

@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Map from '../Map/Map';
+import AtmosphericPressure from './AtmosphericPressure';
 import Humidity from './Humidity';
+import MinMaxTemp from './MinMaxTemp';
 import SunRiseSet from './SunRiseSet';
+import UVIndex from './UVIndex';
 import WindSpeed from './WindSpeed';
 
 const Wrapper = styled.div`
@@ -52,9 +55,9 @@ const WeatherHighlights: React.FC = () => {
           <SunRiseSet />
           <Humidity />
           <WindSpeed />
-          <HighlightsCart />
-          <HighlightsCart />
-          <HighlightsCart />
+          <AtmosphericPressure />
+          <UVIndex />
+          <MinMaxTemp />
         </HighlightsFlex>
         <MapContainer>
           <Map />
