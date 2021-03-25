@@ -18,6 +18,8 @@ const WeekWeatherCard = styled.div`
   background: #fffdfd;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  transition: 0.5s;
+    transform: scale(1);
   span {
     color: #c4c4c4;
   }
@@ -33,12 +35,16 @@ const WeekWeatherCard = styled.div`
   p {
     margin-bottom: 15px;
   }
+  &:hover {
+    transition: 0.5s;
+    transform: scale(1.05);
+  }
 `;
 
 const WeekWeather: React.FC = () => {
   const dayWeather = useTypeSelector((state) => state.weather.data.daily);
   const { ...currentDay } = useTypeSelector((state) => state.date);
-  
+
   const newArr = currentDay.date
     .slice(currentDay.dayIndex + 1)
     .concat(currentDay.date.slice(0, currentDay.dayIndex))

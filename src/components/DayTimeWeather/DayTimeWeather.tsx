@@ -19,6 +19,8 @@ const TimeWeatherCart = styled.div`
   background: #fffdfd;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  transition: 0.5s;
+  transform: scale(1);
   span {
     margin-bottom: 15px;
     font-size: 18px;
@@ -29,9 +31,13 @@ const TimeWeatherCart = styled.div`
     font-size: 18px;
     font-weight: 700;
   }
+  &:hover {
+    transition: 0.5s;
+    transform: scale(1.05);
+  }
 `;
 
-const DayTimeWeather = () => {
+const DayTimeWeather: React.FC = () => {
   const timeWeather = useTypeSelector((state) => state.weather.data.hourly);
   const curTimeWeather = timeWeather?.slice(0, 24).filter((obj, index) => !(index % 3));
   const trueTime = (arr: any) => {

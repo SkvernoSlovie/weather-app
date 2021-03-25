@@ -1,5 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 import Map from '../Map/Map';
+import Humidity from './Humidity';
+import SunRiseSet from './SunRiseSet';
+import WindSpeed from './WindSpeed';
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,17 +43,15 @@ const MapContainer = styled.div`
   padding: 9px 30px 13.5px 0;
 `;
 
-const WeatherHighlights = () => {
+const WeatherHighlights: React.FC = () => {
   return (
     <Wrapper>
       <HighlightsTitle>Today’s Highlights</HighlightsTitle>
       <WeatherHighlightsContainer>
         <HighlightsFlex>
-          <HighlightsCart>
-            <h3>Hello</h3>
-          </HighlightsCart>
-          <HighlightsCart />
-          <HighlightsCart />
+          <SunRiseSet />
+          <Humidity />
+          <WindSpeed />
           <HighlightsCart />
           <HighlightsCart />
           <HighlightsCart />
