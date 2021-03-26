@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import React from 'react';
 import cloudy from '../../assets/cloudy.png';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 
@@ -40,6 +40,7 @@ const TimeWeatherCart = styled.div`
 const DayTimeWeather: React.FC = () => {
   const timeWeather = useTypeSelector((state) => state.weather.data.hourly);
   const curTimeWeather = timeWeather?.slice(0, 24).filter((obj, index) => !(index % 3));
+
   const trueTime = (arr: any) => {
     let counter = new Date().getHours();
     const newArr = [];
@@ -65,7 +66,7 @@ const DayTimeWeather: React.FC = () => {
     <WeatherCartContainer>
       {curTimeWeather &&
         curTimeWeather.map((hour, index) => (
-          <TimeWeatherCart key={hour.dt + index}>
+          <TimeWeatherCart>
             <p>{`${hour.time}:00`}</p>
             <img src={cloudy} alt="" />
             <span>{`${Math.floor(hour.temp - 273.15)}°`}</span>
