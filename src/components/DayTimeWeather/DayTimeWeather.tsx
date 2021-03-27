@@ -2,11 +2,15 @@ import styled from 'styled-components';
 import React from 'react';
 import cloudy from '../../assets/cloudy.png';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
+import { CSSTransition } from 'react-transition-group';
+
+import './style.css';
 
 const WeatherCartContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 30px 0 90px;
+  min-height: 15.5vh;
 `;
 
 const TimeWeatherCart = styled.div`
@@ -35,11 +39,35 @@ const TimeWeatherCart = styled.div`
     transition: 0.5s;
     transform: scale(1.05);
   }
+
+  &.fade-enter {
+    transform: scale(0);
+  }
+
+  &.fade-enter-active {
+    transform: scale(1);
+  }
+
+  &.fade-exit {
+    transform: scale(0);
+  }
+
+  &.fade-exit-active {
+    transform: scale(1);
+  }
 `;
 
 const DayTimeWeather: React.FC = () => {
   const timeWeather = useTypeSelector((state) => state.weather.data.hourly);
   const curTimeWeather = timeWeather?.slice(0, 24).filter((obj, index) => !(index % 3));
+  const [transition, setTransition] = React.useState(false);
+
+  React.useEffect(() => {
+    setTransition(true);
+    return () => {
+      setTransition(false);
+    };
+  }, []);
 
   const trueTime = (arr: any) => {
     let counter = new Date().getHours();
@@ -66,11 +94,19 @@ const DayTimeWeather: React.FC = () => {
     <WeatherCartContainer>
       {curTimeWeather &&
         curTimeWeather.map((hour, index) => (
-          <TimeWeatherCart>
-            <p>{`${hour.time}:00`}</p>
-            <img src={cloudy} alt="" />
-            <span>{`${Math.floor(hour.temp - 273.15)}°`}</span>
-          </TimeWeatherCart>
+          <CSSTransition
+            in={transition}
+            timeout={300}
+            classNames="fade"
+            key={hour.dt + index}
+            mountOnEnter
+            unmountOnExit>
+            <TimeWeatherCart>
+              <p>{`${hour.time}:00`}</p>
+              <img src={cloudy} alt="" />
+              <span>{`${Math.floor(hour.temp - 273.15)}°`}</span>
+            </TimeWeatherCart>
+          </CSSTransition>
         ))}
     </WeatherCartContainer>
   );
