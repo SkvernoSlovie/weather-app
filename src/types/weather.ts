@@ -4,6 +4,12 @@ export interface WeatherState {
       temp: number;
       weather?: any[];
       clouds?: number;
+      sunrise?: number;
+      sunset?: number;
+      uvi?: number;
+      pressure?: number;
+      humidity?: number;
+      wind_speed?: number;
     };
     timezone?: string;
     daily?: any[];

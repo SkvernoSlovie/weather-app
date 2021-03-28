@@ -1,10 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import cloudy from '../../assets/cloudy.png';
 
 import { CSSTransition } from 'react-transition-group';
-import '../DayTimeWeather/style.css';
-import React from 'react';
 
 const WeekWeatherContainer = styled.div`
   display: flex;

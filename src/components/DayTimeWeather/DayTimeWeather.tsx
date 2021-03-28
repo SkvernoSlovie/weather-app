@@ -4,7 +4,7 @@ import cloudy from '../../assets/cloudy.png';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { CSSTransition } from 'react-transition-group';
 
-import './style.css';
+
 
 const WeatherCartContainer = styled.div`
   display: flex;

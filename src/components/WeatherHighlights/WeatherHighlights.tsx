@@ -53,11 +53,12 @@ const WeatherHighlights: React.FC = () => {
       <WeatherHighlightsContainer>
         <HighlightsFlex>
           <SunRiseSet />
-          <Humidity />
           <WindSpeed />
+          <Humidity />
+
+          <MinMaxTemp />
           <AtmosphericPressure />
           <UVIndex />
-          <MinMaxTemp />
         </HighlightsFlex>
         <MapContainer>
           <Map />

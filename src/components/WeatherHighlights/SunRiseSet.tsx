@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTypeSelector } from '../../hooks/useTypeSelector';
 import Card from './Card';
 
 const StyledImg = styled.div`
@@ -28,19 +29,25 @@ const InfoDescription = styled.p`
 const InfoContainer = styled.div``;
 
 const SunRiseSet: React.FC = () => {
+  const { sunrise, sunset } = useTypeSelector((state) => state.weather.data.current);
+  const sunriseTime = sunrise ? new Date(sunrise * 1000) : null;
+  const sunsetTime = sunset ? new Date(sunset * 1000) : null;
   return (
     <Card title="Sunrise & Sunset">
-      <InfoContainer>
-        <StyledInfo>
-          <StyledImg />
-          <InfoDescription>06:18</InfoDescription>
-        </StyledInfo>
+      {sunriseTime && sunsetTime && (
+        <InfoContainer>
+          <StyledInfo>
+            <StyledImg />
 
-        <StyledInfo>
-          <StyledImg />
-          <InfoDescription>18:45</InfoDescription>
-        </StyledInfo>
-      </InfoContainer>
+            <InfoDescription>{`0${sunriseTime.getHours()}:${sunriseTime.getMinutes()}`}</InfoDescription>
+          </StyledInfo>
+
+          <StyledInfo>
+            <StyledImg />
+            <InfoDescription>{`${sunsetTime.getHours()}:${sunsetTime.getMinutes()}`}</InfoDescription>
+          </StyledInfo>
+        </InfoContainer>
+      )}
     </Card>
   );
 };
