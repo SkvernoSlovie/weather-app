@@ -13,6 +13,7 @@ const StyledWindCard = styled.div`
     span {
       font-size: 18px;
       line-height: 21px;
+      margin-left: 5px;
     }
   }
   p:nth-last-child(1) {
@@ -29,7 +30,7 @@ const WindSpeed: React.FC = () => {
       <StyledWindCard>
         <p>
           {windSpeed}
-          <span>km/h</span>
+          <span>m/s</span>
         </p>
         <p>Light air</p>
       </StyledWindCard>

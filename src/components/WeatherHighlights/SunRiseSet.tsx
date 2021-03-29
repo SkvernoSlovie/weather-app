@@ -39,12 +39,16 @@ const SunRiseSet: React.FC = () => {
           <StyledInfo>
             <StyledImg />
 
-            <InfoDescription>{`0${sunriseTime.getHours()}:${sunriseTime.getMinutes()}`}</InfoDescription>
+            <InfoDescription>{`0${sunriseTime.getHours()}:${
+              sunsetTime.getMinutes() < 10 ? `0${sunsetTime.getMinutes()}` : sunsetTime.getMinutes()
+            }`}</InfoDescription>
           </StyledInfo>
 
           <StyledInfo>
             <StyledImg />
-            <InfoDescription>{`${sunsetTime.getHours()}:${sunsetTime.getMinutes()}`}</InfoDescription>
+            <InfoDescription>{`${sunsetTime.getHours()}:${
+              sunsetTime.getMinutes() < 10 ? `0${sunsetTime.getMinutes()}` : sunsetTime.getMinutes()
+            }`}</InfoDescription>
           </StyledInfo>
         </InfoContainer>
       )}

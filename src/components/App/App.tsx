@@ -8,6 +8,13 @@ import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 const AppWrapper = styled.div`
   display: flex;
+  overflow-y: hidden;
+  @media (max-width: 980px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 function App() {

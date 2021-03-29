@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
-import cloudy from '../../assets/cloudy.png';
+import { weatherIcon } from '../../utils/weatherIcon';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -10,6 +10,10 @@ const WeekWeatherContainer = styled.div`
   justify-content: space-between;
   margin: 0 30px 0 90px;
   min-height: 15.5vh;
+  @media (max-width: 980px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 `;
 
 const WeekWeatherCard = styled.div`
@@ -24,6 +28,11 @@ const WeekWeatherCard = styled.div`
   border-radius: 20px;
   transition: 0.5s;
   transform: scale(1);
+  margin-bottom: 5px;
+  img {
+    width: 50%;
+    height: 50%;
+  }
   span {
     color: #c4c4c4;
   }
@@ -90,7 +99,7 @@ const WeekWeather: React.FC = () => {
             key={day.dt + index}>
             <WeekWeatherCard>
               <h3>{newArr[index]}</h3>
-              <img src={cloudy} alt="" />
+              <img src={weatherIcon(day.weather[0].id)} alt="" />
               <p>
                 {`${Math.floor(day.temp.day - 273.15)}°`}{' '}
                 <span>{`${Math.floor(day.temp.night - 273.15)}°`}</span>

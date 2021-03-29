@@ -9,8 +9,8 @@ const PressureContainer = styled.div`
   margin: 45px 0 0 20px;
   color: #202020;
   span {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 36px;
+    line-height: 42px;
   }
 `;
 const StyledInfo = styled.div`

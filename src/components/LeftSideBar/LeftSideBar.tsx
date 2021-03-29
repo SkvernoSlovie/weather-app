@@ -4,7 +4,8 @@ import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 import searcIcon from '../../assets/SearchIcon.svg';
 import homeIcon from '../../assets/HomeIcon.svg';
-import weatherIcon from '../../assets/WeatherClouds.png';
+import { weatherIcon } from '../../utils/weatherIcon';
+
 import weatherCloud from '../../assets/cloudy.png';
 import weatherRain from '../../assets/rain.png';
 
@@ -15,6 +16,12 @@ const LeftBarContainer = styled.div`
   height: 100vh;
   background: #ffffff;
   box-shadow: 5px 0px 4px rgba(83, 108, 131, 0.25);
+  @media (max-width: 980px) {
+    box-shadow: none;
+    width: 60vw;
+    align-items: center;
+    margin-bottom: 50px;
+  }
 `;
 
 const LeftBarHeader = styled.div`
@@ -37,7 +44,6 @@ const Button = styled.button`
   border-radius: 50px;
   width: 40px;
   height: 40px;
-
   &:focus {
     outline: none;
   }
@@ -51,7 +57,6 @@ const Button = styled.button`
 
 const Input = styled.input.attrs((props) => ({
   type: 'text',
-  size: props.size,
 }))`
   background: #f1f1f1;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
@@ -114,7 +119,8 @@ const LeftSideBar: React.FC = () => {
   const weather = useTypeSelector((state) => state.weather.data);
   const date = useTypeSelector((state) => state.date);
   const [currentTime, setCurrentTime] = React.useState(date.time);
-
+  const weatherId = weather.current.weather && weather.current.weather[0].id;
+  const [inputValue, setInputValue] = React.useState('');
   React.useEffect(() => {
     const clock = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString().slice(0, 5));
@@ -127,18 +133,18 @@ const LeftSideBar: React.FC = () => {
   return (
     <LeftBarContainer>
       <LeftBarHeader>
-        <Input />
+        <Input onChange={(e) => setInputValue(e.target.value)} />
         <ButtonContainer>
-          <Button>
+          <Button onClick={() => alert('search')}>
             <img src={searcIcon} />
           </Button>
-          <Button>
+          <Button onClick={() => alert('home')}>
             <img src={homeIcon} />
           </Button>
         </ButtonContainer>
       </LeftBarHeader>
       <WeatherContent>
-        <img src={weatherIcon} />
+        <img src={weatherIcon(weatherId)} />
         <WeatherMainContent>
           <h1>{`${weather.current.temp}°`}</h1>
           <p>{weather.timezone?.split('/').reverse().join(', ')}</p>
@@ -148,8 +154,12 @@ const LeftSideBar: React.FC = () => {
         </WeatherMainContent>
         <WeatherSecondaryContent>
           <SecondaryContentFlex>
-            <img src={weatherCloud} />
-            <p>{`Clouds - ${weather.current.clouds}%`}</p>
+            <div>
+              <img src={weatherCloud} />
+            </div>
+            <div>
+              <p>{`Clouds - ${weather.current.clouds}%`}</p>
+            </div>
           </SecondaryContentFlex>
           <SecondaryContentFlex>
             <img src={weatherRain} />

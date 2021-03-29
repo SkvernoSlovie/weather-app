@@ -9,11 +9,15 @@ const MainContentWrapper = styled.div`
   flex-direction: column;
   width: 75vw;
   height: 100vh;
+  @media (max-width: 980px) {
+    width: 100vw;
+    margin-top: 100px;
+    background: #f5f5f5;
+  }
 `;
 
 const TempButton = styled.button`
   border: none;
-  background: #ffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 40px;
   height: 40px;
@@ -22,11 +26,10 @@ const TempButton = styled.button`
   font-weight: 500;
   font-size: 18px;
   line-height: 28px;
-  color: #202020;
+  color: ${(props) => props.color};
+  
   &:focus {
     outline: none;
-    background: #202020;
-    color: #fff;
   }
 `;
 
@@ -73,6 +76,7 @@ const WeatherSecondary = styled.div`
 
 const MainContent: React.FC = () => {
   const [toggleTime, setToggleTime] = React.useState(false);
+  const [toggleTemp, setToggleTemp] = React.useState(true);
   return (
     <MainContentWrapper>
       <MainHeader>
@@ -89,8 +93,10 @@ const MainContent: React.FC = () => {
           </TimeButton>
         </TimeButtonContainer>
         <TempButtonContainer>
-          <TempButton>°C</TempButton>
-          <TempButton>°F</TempButton>
+          <TempButton onClick={() => setToggleTemp(true)} color={toggleTemp ? '#ffff' : '#202020'}>
+            °C
+          </TempButton>
+          <TempButton onClick={() => setToggleTemp(false)}>°F</TempButton>
         </TempButtonContainer>
       </MainHeader>
       {toggleTime ? <DayTimeWeather /> : <WeekWeather />}

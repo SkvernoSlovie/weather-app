@@ -12,20 +12,16 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 90px;
+  @media (max-width: 980px) {
+    margin-left: 0px;
+    align-items: center;
+    justify-content: space-around;
+  }
 `;
 
 const WeatherHighlightsContainer = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const HighlightsCart = styled.div`
-  width: 250px;
-  height: 200px;
-  background: #ffff;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin: 0 15px 15px 0;
 `;
 
 const HighlightsFlex = styled.div`
@@ -44,6 +40,8 @@ const MapContainer = styled.div`
   hight: 100%;
   width: 40%;
   padding: 9px 30px 13.5px 0;
+  @media (max-width: 980px) {
+  }
 `;
 
 const WeatherHighlights: React.FC = () => {

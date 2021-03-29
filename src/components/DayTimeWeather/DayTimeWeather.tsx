@@ -3,14 +3,18 @@ import React from 'react';
 import cloudy from '../../assets/cloudy.png';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { CSSTransition } from 'react-transition-group';
-
-
+import { weatherIcon } from '../../utils/weatherIcon';
 
 const WeatherCartContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 30px 0 90px;
   min-height: 15.5vh;
+
+  @media (max-width: 980px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 `;
 
 const TimeWeatherCart = styled.div`
@@ -25,6 +29,11 @@ const TimeWeatherCart = styled.div`
   border-radius: 20px;
   transition: 0.5s;
   transform: scale(1);
+  margin-bottom: 5px;
+  img {
+    width: 50%;
+    height: 50%;
+  }
   span {
     margin-bottom: 15px;
     font-size: 18px;
@@ -89,7 +98,7 @@ const DayTimeWeather: React.FC = () => {
     return newArr;
   };
   trueTime(curTimeWeather);
-
+  console.log(curTimeWeather);
   return (
     <WeatherCartContainer>
       {curTimeWeather &&
@@ -103,7 +112,7 @@ const DayTimeWeather: React.FC = () => {
             unmountOnExit>
             <TimeWeatherCart>
               <p>{`${hour.time}:00`}</p>
-              <img src={cloudy} alt="" />
+              <img src={weatherIcon(hour.weather[0].id)} alt="" />
               <span>{`${Math.floor(hour.temp - 273.15)}°`}</span>
             </TimeWeatherCart>
           </CSSTransition>
