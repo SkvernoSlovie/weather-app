@@ -77,7 +77,7 @@ const WeekWeather: React.FC = () => {
   const [transition, setTransition] = React.useState(false);
   React.useEffect(() => {
     setTransition(true);
-    () => {
+    return () => {
       setTransition(false);
     };
   }, []);
