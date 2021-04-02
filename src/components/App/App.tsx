@@ -21,11 +21,12 @@ function App() {
   const { setGeolocation, fetchWeather, setCurrentData } = useActions();
   const coords = useTypeSelector((state) => state.geolocation.userGeo);
   const isLoad = useTypeSelector((state) => state.weather.loading);
+
   React.useEffect(() => {
     setGeolocation();
     setCurrentData();
   }, []);
-  console.log(coords);
+
   React.useEffect(() => {
     if (coords) {
       fetchWeather(coords);
