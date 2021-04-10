@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import WeekWeather from '../WeekWeather/WeekWeather';
 import WeatherHighlights from '../WeatherHighlights/WeatherHighlights';
 import DayTimeWeather from '../DayTimeWeather/DayTimeWeather';
+import { TempButtonProps } from '../../types/styledComponents';
 
 const MainContentWrapper = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const MainContentWrapper = styled.div`
   }
 `;
 
-const TempButton = styled.button`
+const TempButton = styled.button<TempButtonProps>`
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 40px;
@@ -27,7 +28,7 @@ const TempButton = styled.button`
   font-size: 18px;
   line-height: 28px;
   color: ${(props) => props.color};
-  
+  background: ${(props) => props.background};
   &:focus {
     outline: none;
   }
@@ -93,10 +94,18 @@ const MainContent: React.FC = () => {
           </TimeButton>
         </TimeButtonContainer>
         <TempButtonContainer>
-          <TempButton onClick={() => setToggleTemp(true)} color={toggleTemp ? '#ffff' : '#202020'}>
+          <TempButton
+            onClick={() => setToggleTemp(true)}
+            color={toggleTemp ? '#ffff' : '#202020'}
+            background={toggleTemp ? '#202020' : '#ffff'}>
             °C
           </TempButton>
-          <TempButton onClick={() => setToggleTemp(false)}>°F</TempButton>
+          <TempButton
+            onClick={() => setToggleTemp(false)}
+            color={toggleTemp ? '#202020' : '#ffff'}
+            background={toggleTemp ? '#ffff' : '#202020'}>
+            °F
+          </TempButton>
         </TempButtonContainer>
       </MainHeader>
       {toggleTime ? <DayTimeWeather /> : <WeekWeather />}

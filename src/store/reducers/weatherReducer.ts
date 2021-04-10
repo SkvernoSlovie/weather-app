@@ -10,8 +10,16 @@ const initialState: WeatherState = {
   error: null,
 };
 
+interface HourArr {
+  temp: number;
+}
+
 const getCelciusFromKelvine = (obj: any) => {
   obj.current.temp = Math.round(obj.current.temp - 273.15);
+
+  obj.hourly = obj.hourly.map(
+    (hour: HourArr) => (hour = { ...hour, temp: (hour.temp = Math.round(hour.temp - 273.15)) }),
+  );
 
   return obj;
 };

@@ -86,6 +86,10 @@ const WeekWeather: React.FC = () => {
     .concat(currentDay.date.slice(0, currentDay.dayIndex))
     .concat(currentDay.date[currentDay.dayIndex]);
 
+  const toCeilsius = (temp: number) => {
+    return Math.floor(temp - 273.15);
+  };
+
   return (
     <WeekWeatherContainer>
       {dayWeather &&
@@ -101,8 +105,7 @@ const WeekWeather: React.FC = () => {
               <h3>{newArr[index]}</h3>
               <img src={weatherIcon(day.weather[0].id)} alt="" />
               <p>
-                {`${Math.floor(day.temp.day - 273.15)}°`}{' '}
-                <span>{`${Math.floor(day.temp.night - 273.15)}°`}</span>
+                {`${toCeilsius(day.temp.day)}°`} <span>{`${toCeilsius(day.temp.night)}°`}</span>
               </p>
             </WeekWeatherCard>
           </CSSTransition>

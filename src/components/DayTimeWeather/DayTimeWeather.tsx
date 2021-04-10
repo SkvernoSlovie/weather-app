@@ -98,7 +98,8 @@ const DayTimeWeather: React.FC = () => {
     return newArr;
   };
   trueTime(curTimeWeather);
-  console.log(curTimeWeather);
+  
+
   return (
     <WeatherCartContainer>
       {curTimeWeather &&
@@ -113,7 +114,7 @@ const DayTimeWeather: React.FC = () => {
             <TimeWeatherCart>
               <p>{`${hour.time}:00`}</p>
               <img src={weatherIcon(hour.weather[0].id)} alt="" />
-              <span>{`${Math.floor(hour.temp - 273.15)}°`}</span>
+              <span>{`${hour.temp}°`}</span>
             </TimeWeatherCart>
           </CSSTransition>
         ))}
