@@ -10,13 +10,23 @@ const StyledHimidity = styled.div`
   p {
     font-size: 48px;
     line-height: 56px;
-
     color: #202020;
   }
   span {
     font-size: 24px;
     line-height: 28px;
     margin: 5px 0 0 2px;
+  }
+  @media (max-width: 1600px) {
+    p {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    span {
+      font-size: 12px;
+      line-height: 14px;
+      margin: 2px 0 0 2px;
+    }
   }
 `;
 
@@ -29,11 +39,15 @@ const HimidityLevel = styled.div`
   border-radius: 15px;
   border: 1px solid #c9c9c9;
   padding: 3px;
+  @media (max-width: 1600px) {
+    width: 25px;
+    height: 100px;
+    margin: 0 15px 0 10px;
+  }
 `;
 
 const Text = styled.div`
   display: flex;
-
   align-items: flex-start;
 `;
 

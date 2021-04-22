@@ -6,11 +6,22 @@ import Card from './Card';
 const PressureContainer = styled.div`
   display: flex;
   align-items: center;
+  height: 100%;
   margin: 45px 0 0 20px;
   color: #202020;
   span {
     font-size: 36px;
     line-height: 42px;
+  }
+  @media (max-width: 1600px) {
+    margin: 0;
+    flex-direction: column;
+    margin-right: 10px;
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+    }
   }
 `;
 const StyledInfo = styled.div`
@@ -19,6 +30,12 @@ const StyledInfo = styled.div`
     line-height: 21px;
   }
   margin-left: 10px;
+  @media (max-width: 1600px) {
+    p {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
 `;
 
 const AtmosphericPressure: React.FC = () => {

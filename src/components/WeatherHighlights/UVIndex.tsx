@@ -14,6 +14,15 @@ const IndexWrapper = styled.div`
 
     color: #202020;
   }
+  @media (max-width: 1600px) {
+    margin: 0 10px 0 10px;
+
+    p {
+      font-size: 28px;
+      line-height: 36px;
+      padding-right: 10px;
+    }
+  }
 `;
 
 const Index = styled.div`
@@ -25,6 +34,10 @@ const Index = styled.div`
   border-radius: 15px;
   border: 1px solid #c9c9c9;
   padding: 3px;
+  @media (max-width: 1600px) {
+    width: 25px;
+    height: 100px;
+  }
 `;
 interface Props {
   height: string;

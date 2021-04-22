@@ -13,10 +13,10 @@ const LeftBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 25vw;
-  height: 100vh;
+  min-height: 100%;
   background: #ffffff;
   box-shadow: 5px 0px 4px rgba(83, 108, 131, 0.25);
-  @media (max-width: 980px) {
+  @media (max-width: 1370px) {
     box-shadow: none;
     width: 60vw;
     align-items: center;

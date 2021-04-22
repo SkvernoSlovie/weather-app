@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 90px;
+
   @media (max-width: 980px) {
     margin-left: 0px;
     align-items: center;
@@ -39,8 +40,9 @@ const HighlightsTitle = styled.p`
 const MapContainer = styled.div`
   hight: 100%;
   width: 40%;
-  padding: 9px 30px 13.5px 0;
-  @media (max-width: 980px) {
+  padding: 0 30px 13.5px 0;
+  @media (max-width: 1910px) {
+    width: 60%;
   }
 `;
 

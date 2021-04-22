@@ -5,6 +5,7 @@ import Card from './Card';
 
 const StyledWindCard = styled.div`
   margin-left: 20px;
+  height: 100%;
   p {
     color: #202020;
     font-size: 48px;
@@ -20,6 +21,29 @@ const StyledWindCard = styled.div`
     font-weight: 300;
     font-size: 18px;
     line-height: 21px;
+  }
+  @media (max-width: 1600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    p {
+      color: #202020;
+      font-size: 24px;
+      line-height: 26px;
+      margin: 0 10px 10px 0;
+      span {
+        font-size: 14px;
+        line-height: 16px;
+        margin-left: 5px;
+      }
+    }
+    p:nth-last-child(1) {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 `;
 

@@ -7,6 +7,10 @@ import maxTemp from '../../assets/maxTemp.svg';
 
 const MinMaxTempContainer = styled.div`
   margin-left: 20px;
+  height: 100%;
+  @media (max-width: 1600px) {
+    margin: 0 10px 0 10px;
+  }
 `;
 
 const StyledTemp = styled.div`
@@ -21,6 +25,20 @@ const StyledTemp = styled.div`
   }
   img {
     margin-right: 30px;
+  }
+  @media (max-width: 1600px) {
+    &:first-child {
+      margin-bottom: 10px;
+    }
+    margin-bottom: 0;
+    p {
+      font-size: 18px;
+      line-height: 21px;
+    }
+    img {
+      margin-right: 0;
+      max-height: 40px;
+    }
   }
 `;
 

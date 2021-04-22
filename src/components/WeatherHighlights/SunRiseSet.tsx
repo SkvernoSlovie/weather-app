@@ -8,6 +8,10 @@ const StyledImg = styled.div`
   height: 50px;
   border-radius: 50%;
   background: #ffb901;
+  @media (max-width: 1600px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const StyledInfo = styled.div`
@@ -15,18 +19,34 @@ const StyledInfo = styled.div`
   justify-content: left;
   align-items: center;
   margin: 0 0 20px 20px;
+  @media (max-width: 1600px) {
+    margin: 0 0 0 15px;
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
 `;
 
 const InfoDescription = styled.p`
   font-weight: 500;
   font-size: 21px;
-  line-height: 21px;
   margin-left: 25px;
-
   color: #202020;
+  @media (max-width: 1600px) {
+    font-size: 18px;
+    margin: 0 15px 0 10px;
+  }
 `;
 
-const InfoContainer = styled.div``;
+const InfoContainer = styled.div`
+  @media (max-width: 1600px) {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 const SunRiseSet: React.FC = () => {
   const { sunrise, sunset } = useTypeSelector((state) => state.weather.data.current);

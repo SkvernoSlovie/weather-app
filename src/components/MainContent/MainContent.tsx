@@ -9,8 +9,8 @@ const MainContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 75vw;
-  height: 100vh;
-  @media (max-width: 980px) {
+  height: 100%;
+  @media (max-width: 1370px) {
     width: 100vw;
     margin-top: 100px;
     background: #f5f5f5;

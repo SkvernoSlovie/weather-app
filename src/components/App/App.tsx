@@ -8,8 +8,8 @@ import { useTypeSelector } from '../../hooks/useTypeSelector';
 
 const AppWrapper = styled.div`
   display: flex;
-  overflow-y: hidden;
-  @media (max-width: 980px) {
+  box-sizing: border-box;
+  @media (max-width: 1370px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
