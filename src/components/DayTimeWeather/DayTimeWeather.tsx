@@ -27,7 +27,7 @@ const TimeWeatherCart = styled.div`
   background: #fffdfd;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  transition: 0.5s;
+  transition: 0.7s;
   transform: scale(1);
   margin-bottom: 5px;
   img {

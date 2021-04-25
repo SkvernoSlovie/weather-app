@@ -9,6 +9,8 @@ import { useTypeSelector } from '../../hooks/useTypeSelector';
 const AppWrapper = styled.div`
   display: flex;
   box-sizing: border-box;
+  
+
   @media (max-width: 1370px) {
     display: flex;
     flex-direction: column;
