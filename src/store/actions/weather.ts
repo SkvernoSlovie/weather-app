@@ -20,3 +20,11 @@ export const fetchWeather = (arr: number[]) => {
     }
   };
 };
+
+export const getFahrenheit = () => {
+  return (dispatch: Dispatch<WeatherAction>) => {
+    dispatch({
+      type: WeatherActionsTypes.GET_FAHRENHEIT_TEMP,
+    });
+  };
+};

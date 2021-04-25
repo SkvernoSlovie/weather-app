@@ -17,13 +17,15 @@ export interface WeatherState {
   };
   loading: boolean;
   error: null | string;
+  fahrenheit: number;
 }
 
 export enum WeatherActionsTypes {
   FETCH_WEATHER = 'FETCH_WEATHER',
   FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS',
-  FETCH_SEARCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS',
+  FETCH_SEARCH_WEATHER_SUCCESS = 'FETCH_SEARCH_WEATHER_SUCCESS',
   FETCH_WEATHER_ERROR = 'FETCH_WEATHER_ERROR',
+  GET_FAHRENHEIT_TEMP = 'GET_FAHRENHEIT_TEMP',
 }
 
 export interface FetchWeatherAction {
@@ -39,6 +41,10 @@ export interface FetchWeatherSuccessAction {
   };
 }
 
+export interface GetFahrenheitTemp {
+  type: WeatherActionsTypes.GET_FAHRENHEIT_TEMP;
+}
+
 export interface FetchWeatherErrorAction {
   type: WeatherActionsTypes.FETCH_WEATHER_ERROR;
   payload: string;
@@ -47,4 +53,5 @@ export interface FetchWeatherErrorAction {
 export type WeatherAction =
   | FetchWeatherAction
   | FetchWeatherErrorAction
-  | FetchWeatherSuccessAction;
+  | FetchWeatherSuccessAction
+  | GetFahrenheitTemp;

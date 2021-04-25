@@ -8,6 +8,7 @@ const initialState: WeatherState = {
   },
   loading: false,
   error: null,
+  fahrenheit: 0,
 };
 
 interface HourArr {
@@ -32,6 +33,8 @@ export const weatherReducer = (state = initialState, action: WeatherAction): Wea
       return { ...state, loading: false, data: getCelciusFromKelvine(action.payload) };
     case WeatherActionsTypes.FETCH_WEATHER_ERROR:
       return { ...state, error: action.payload };
+    case WeatherActionsTypes.GET_FAHRENHEIT_TEMP:
+      return { ...state, fahrenheit: 10 };
     default:
       return state;
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTypeSelector } from '../../hooks/useTypeSelector';
 import { weatherIcon } from '../../utils/weatherIcon';
+import { useActions } from '../../hooks/useAction';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -57,7 +58,6 @@ const WeekWeatherCard = styled.div`
     transform: scale(0);
   }
 
-  
   &.fade-enter-active {
     transform: scale(1);
   }
@@ -73,10 +73,14 @@ const WeekWeatherCard = styled.div`
 
 const WeekWeather: React.FC = () => {
   const dayWeather = useTypeSelector((state) => state.weather.data.daily);
+  const dayFarTemp = useTypeSelector((state) => state.weather.fahrenheit);
+  const { getFahrenheit } = useActions();
+  console.log(dayFarTemp);
   const { ...currentDay } = useTypeSelector((state) => state.date);
   const [transition, setTransition] = React.useState(false);
   React.useEffect(() => {
     setTransition(true);
+    getFahrenheit();
     return () => {
       setTransition(false);
     };
